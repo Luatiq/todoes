@@ -1,0 +1,29 @@
+{% block navbar %}
+    <nav class="navbar navbar-expand-sm bg-dark">
+        <div class="container-fluid">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link text-light active" href="{{ path('base.home') }}">Home</a>
+                </li>
+            </ul>
+
+            <ul class="navbar-nav {{ app.user ? 'btn-group' }}">
+                {% if app.user %}
+                    <li class="nav-item dropdown btn-group">
+                        <a href="#" class="nav-link btn">img here</a>
+                        <a class="nav-link text-light dropdown-toggle dropdown-toggle-split btn" href="#" role="button"
+                           data-bs-toggle="dropdown" aria-expanded="false"></a>
+
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            <li><a class="dropdown-item text-danger" href="{{ path('auth.logout') }}" title="Logout">Logout</a></li>
+                        </ul>
+                    </li>
+                {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link text-light active" href="{{ path('auth.login') }}">Login</a>
+                    </li>
+                {% endif %}
+            </ul>
+        </div>
+    </nav>
+{% endblock %}
