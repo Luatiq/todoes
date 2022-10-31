@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Profile{% endblock %}
+{% block title %}{{ 'title.profile'|trans }}{% endblock %}
 
 {% block body %}
     {{ form_start(form) }}
@@ -8,8 +8,8 @@
     {{ form_row(form.display) }}
     {{ form_row(form.email) }}
 
-    {{ form_row(form.plainPassword, { label: 'Password' }) }}
+    {{ form_row(form.plainPassword) }}
 
-    <button type="submit" class="btn mt-2 btn-primary">Save</button>
+    <button type="submit" class="btn mt-2 btn-primary">{{ 'button.save'|trans }}</button>
     {{ form_end(form) }}
 {% endblock %}

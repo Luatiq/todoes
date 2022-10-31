@@ -1,0 +1,22 @@
+
+button:
+  save: "Save"
+  sign_in: "Sign in"
+  register: "Register"
+
+title:
+  register: "Register"
+  profile: "Profile"
+  login: "Log in"
+  home: "Home"
+
+form:
+  help:
+    only_change_pass_when_filled_in: "Your password will only be changed if you fill this in."
+
+# Uncategorized; usually form stuff
+"Display": "Name"
+"Email": "E-mail"
+"Plain password": "Password"
+"Password": "Password"
+"logout": "Logout"

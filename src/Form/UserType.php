@@ -48,14 +48,14 @@ class UserType extends AbstractType
             ]);
         } else {
             $passData = array_merge($passData, [
-                'help' => 'Your password will only be changed if you fill this in.',
+                'help' => 'form.help.only_change_pass_when_filled_in',
             ]);
         }
 
         $builder
             ->add('display', TextType::class, [
                 'required' => true,
-                'label' => 'Name',
+                'label' => 'Display',
                 'attr' => [
                     'class' => 'form-control',
                     'autofocus' => true,

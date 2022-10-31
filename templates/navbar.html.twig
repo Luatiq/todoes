@@ -3,7 +3,7 @@
         <div class="container-fluid">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link text-light active" href="{{ path('base.home') }}">Home</a>
+                    <a class="nav-link text-light active" href="{{ path('base.home') }}">{{ 'title.home'|trans }}</a>
                 </li>
             </ul>
 
@@ -15,12 +15,12 @@
                            data-bs-toggle="dropdown" aria-expanded="false"></a>
 
                         <ul class="dropdown-menu dropdown-menu-end">
-                            <li><a class="dropdown-item text-danger" href="{{ path('auth.logout') }}" title="Logout">Logout</a></li>
+                            <li><a class="dropdown-item text-danger" href="{{ path('auth.logout') }}" title="Logout">{{ "logout"|trans }}</a></li>
                         </ul>
                     </li>
                 {% else %}
                     <li class="nav-item">
-                        <a class="nav-link text-light active" href="{{ path('auth.login') }}">Login</a>
+                        <a class="nav-link text-light active" href="{{ path('auth.login') }}">{{ 'button.sign_in'|trans }}</a>
                     </li>
                 {% endif %}
             </ul>
