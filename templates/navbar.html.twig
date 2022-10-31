@@ -10,7 +10,7 @@
             <ul class="navbar-nav {{ app.user ? 'btn-group' }}">
                 {% if app.user %}
                     <li class="nav-item dropdown btn-group">
-                        <a href="#" class="nav-link btn">img here</a>
+                        <a href="{{ path('profile.edit') }}" class="nav-link text-light btn">{{ app.user.display }}</a>
                         <a class="nav-link text-light dropdown-toggle dropdown-toggle-split btn" href="#" role="button"
                            data-bs-toggle="dropdown" aria-expanded="false"></a>
 

@@ -18,6 +18,40 @@ class UserType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
+        $passData = [
+            'mapped' => false,
+            'attr' => [
+                'autocomplete' => 'new-password',
+                'class' => 'form-control',
+            ],
+            'label_attr' => [
+                'class' => 'mt-2'
+            ],
+            'constraints' => [
+                new Length([
+                    'min' => 6,
+                    'minMessage' => 'Your password should be at least {{ limit }} characters',
+                    // max length allowed by Symfony for security reasons
+                    'max' => 4096,
+                ]),
+            ],
+            'required' => false,
+        ];
+
+        if ($options['isRegistrationForm']) {
+            $passData = array_merge_recursive($passData, [
+                'constraints' => [
+                    new NotBlank([
+                        'message' => 'Please enter a password',
+                    ]),
+                ]
+            ]);
+        } else {
+            $passData = array_merge($passData, [
+                'help' => 'Your password will only be changed if you fill this in.',
+            ]);
+        }
+
         $builder
             ->add('display', TextType::class, [
                 'required' => true,
@@ -38,30 +72,11 @@ class UserType extends AbstractType
                     'class' => 'mt-2'
                 ],
             ])
-            ->add('plainPassword', PasswordType::class, [
-                'mapped' => false,
-                'attr' => [
-                    'autocomplete' => 'new-password',
-                    'class' => 'form-control',
-                ],
-                'label_attr' => [
-                    'class' => 'mt-2'
-                ],
-                'constraints' => [
-                    new NotBlank([
-                        'message' => 'Please enter a password',
-                    ]),
-                    new Length([
-                        'min' => 6,
-                        'minMessage' => 'Your password should be at least {{ limit }} characters',
-                        // max length allowed by Symfony for security reasons
-                        'max' => 4096,
-                    ]),
-                ],
-            ])
+            ->add('plainPassword', PasswordType::class, $passData)
         ;
 
-        if ($options['isRegistrationForm']) {
+        if (!$options['isRegistrationForm']) {
+            // Avatar stuff here
         }
     }
 
