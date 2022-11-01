@@ -1,0 +1,24 @@
+{% extends 'user/overview.html.twig' %}
+
+{% block records %}
+    {% for item in items %}
+        <tr>
+            <td>{{ item.id }}</td>
+            <td>{{ item.display }}</td>
+            <td>{{ item.email }}</td>
+            <td>{{ item.role }}</td>
+            <td class="py-1 text-end">
+                <a href="{{ item.id == app.user.id ? path('profile.edit') : path('user.edit', {user:item.id}) }}"
+                   class="btn btn-sm btn-primary"
+                   title="{{ 'action.edit'|trans }}"
+                ><i class="fa-fw fa-solid fa-pen-to-square"></i></a>
+                <a onclick="return confirmDelete('{{ item.id }}')"
+                   class="btn btn-sm btn-danger"
+                   title="{{ 'action.delete'|trans }}"
+                ><i class="fa-fw fa-solid fa-trash"></i></a>
+            </td>
+        </tr>
+    {% else %}
+
+    {% endfor %}
+{% endblock %}

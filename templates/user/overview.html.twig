@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ 'title.user_overview'|trans }}{% endblock %}
+
+{% block body %}
+    <div class="">
+        <table class="table table-borderless table-responsive table-striped table-hover">
+            <thead>
+            <tr>
+                <th style="max-width: 100px">{{ 'overview.id'|trans }}</th>
+                <th>{{ 'overview.display'|trans }}</th>
+                <th>{{ 'overview.email'|trans }}</th>
+                <th>{{ 'overview.role'|trans }}</th>
+                <th class="text-end" style="width: 100px">{{ 'overview.actions'|trans }}</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% block records %}
+            {% endblock %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    <script>
+        function confirmDelete(id) {
+            if (confirm('{{ 'message.delete'|trans }}')) {
+                let path = "{{ path('user.delete', {user:'0'}) }}";
+                path = path.replace('0', id);
+
+                window.location = path;
+            }
+        }
+    </script>
+{% endblock %}

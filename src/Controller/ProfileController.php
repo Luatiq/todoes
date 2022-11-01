@@ -36,7 +36,7 @@ class ProfileController extends AbstractController
             $userEntity = $userRepository->findOneBy(['email'=>$user->getUserIdentifier()]);
 
             if ($form->get('plainPassword')->getData() && strlen($form->get('plainPassword')->getData()) > 6) {
-                // Do something here
+                // Todo fix setting pass when user has already been created
             }
 
             $this->em->persist($userEntity);

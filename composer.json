@@ -21,6 +21,7 @@
         "symfony/runtime": "6.1.*",
         "symfony/security-bundle": "6.1.*",
         "symfony/translation": "6.1.*",
+        "symfony/twig-bundle": "6.1.*",
         "symfony/validator": "6.1.*",
         "symfony/webpack-encore-bundle": "^1.16",
         "symfony/yaml": "6.1.*",
@@ -79,6 +80,7 @@
         }
     },
     "require-dev": {
+        "doctrine/doctrine-fixtures-bundle": "^3.4",
         "symfony/maker-bundle": "^1.47",
         "symfony/stopwatch": "6.1.*",
         "symfony/web-profiler-bundle": "6.1.*"

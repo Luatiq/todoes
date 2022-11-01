@@ -9,6 +9,12 @@ use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 
 #[ORM\Entity(repositoryClass: UserRepository::class)]
+#[ORM\InheritanceType('SINGLE_TABLE')]
+#[ORM\DiscriminatorColumn(name: 'role', type: 'string')]
+#[ORM\DiscriminatorMap([
+    'ROLE_ADMIN' => AdminUser::class,
+    'ROLE_USER' => User::class
+])]
 #[UniqueEntity(fields: ['email'], message: 'There is already an account with this email')]
 class User implements UserInterface, PasswordAuthenticatedUserInterface
 {
@@ -73,6 +79,10 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         $this->roles = $roles;
 
         return $this;
+    }
+
+    public function getRole(): string {
+        return $this->getRoles()[0];
     }
 
     /**

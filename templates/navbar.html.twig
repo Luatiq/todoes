@@ -5,6 +5,11 @@
                 <li class="nav-item">
                     <a class="nav-link text-light active" href="{{ path('base.home') }}">{{ 'title.home'|trans }}</a>
                 </li>
+                {% if is_granted('ROLE_ADMIN') %}
+                    <li class="nav-item">
+                        <a class="nav-link text-light" href="{{ path('user.overview') }}">{{ 'title.user_overview'|trans }}</a>
+                    </li>
+                {% endif %}
             </ul>
 
             <ul class="navbar-nav {{ app.user ? 'btn-group' }}">
