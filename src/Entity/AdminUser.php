@@ -20,6 +20,7 @@ class AdminUser extends User
         // guarantee every user at least has ROLE_USER
         $roles[] = 'ROLE_ADMIN';
         $roles[] = 'ROLE_USER';
+        $roles[] = 'ROLE_ALLOWED_TO_SWITCH';
 
         return array_unique($roles);
     }

@@ -27,6 +27,8 @@ overview:
 action:
   edit: "Edit"
   delete: "Delete"
+  impersonate: "Impersonate"
+  exit_impersonation: "Exit impersonation"
 
 message:
   delete: "Are you sure you want to delete this item?"

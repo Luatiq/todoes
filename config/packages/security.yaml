@@ -21,6 +21,7 @@ security:
             lazy: true
             provider: app_user_provider
             custom_authenticator: App\Security\LoginAuthenticator
+            switch_user: true
             logout:
                 path: auth.logout
                 # where to redirect after logout

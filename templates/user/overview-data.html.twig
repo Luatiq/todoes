@@ -8,18 +8,26 @@
             <td><a href="mailto:{{ item.email }}">{{ item.email }}</a></td>
             <td>{{ item.role }}</td>
             <td class="py-1 text-end">
-                <a href="{{ item.id == app.user.id ? path('profile.edit') : path('user.edit', {user:item.id}) }}"
-                   class="btn btn-sm btn-primary"
-                   title="{{ 'action.edit'|trans }}"
-                ><i class="fa-fw fa-solid fa-pen-to-square"></i></a>
                 <a
-                   class="btn btn-sm btn-danger confirmDelete"
-                   data-del-id="{{ item.id }}"
-                   data-del-path="{{ path('user.delete', {user:0}) }}"
-                   data-del-confirm-text="{{ 'message.delete'|trans }}"
-                   data-del-button-text="{{ 'button.confirm_delete'|trans }}"
-                   data-del-cancel-text="{{ 'button.cancel'|trans }}"
-                   title="{{ 'action.delete'|trans }}"
+                        href="{{ item.id == app.user.id ? path('profile.edit') : path('user.edit', {user:item.id}) }}"
+                        class="btn btn-sm btn-primary"
+                        title="{{ 'action.edit'|trans }}"
+                ><i class="fa-fw fa-solid fa-pen-to-square"></i></a>
+
+                <a
+                        href="{{ path('profile.edit', { '_switch_user': item.email }) }}"
+                        class="btn btn-sm btn-secondary"
+                        title="{{ 'action.impersonate'|trans }}"
+                ><i class="fa-fw fa-solid fa-mask"></i></a>
+
+                <a
+                        class="btn btn-sm btn-danger confirmDelete"
+                        data-del-id="{{ item.id }}"
+                        data-del-path="{{ path('user.delete', {user:0}) }}"
+                        data-del-confirm-text="{{ 'message.delete'|trans }}"
+                        data-del-button-text="{{ 'button.confirm_delete'|trans }}"
+                        data-del-cancel-text="{{ 'button.cancel'|trans }}"
+                        title="{{ 'action.delete'|trans }}"
                 ><i class="fa-fw fa-solid fa-trash"></i></a>
             </td>
         </tr>

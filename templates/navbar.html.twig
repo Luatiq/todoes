@@ -22,12 +22,26 @@
                            data-bs-toggle="dropdown" aria-expanded="false"></a>
 
                         <ul class="dropdown-menu dropdown-menu-end">
-                            <li><a class="dropdown-item text-danger" href="{{ path('auth.logout') }}" title="Logout">{{ "logout"|trans }}</a></li>
+                            {% if is_granted('IS_IMPERSONATOR') %}
+                                <li>
+                                    <a
+                                            class="dropdown-item text-secondary"
+                                            href="{{ path('profile.edit', { '_switch_user': '_exit' }) }}"
+                                    ><i class="fa-solid fa-arrow-left"></i>&nbsp;{{ 'action.exit_impersonation'|trans }}
+                                    </a>
+                                </li>
+                            {% endif %}
+
+                            <li>
+                                <a class="dropdown-item text-danger" href="{{ path('auth.logout') }}" title="Logout"
+                                ><i class="fa-solid fa-right-from-bracket"></i>&nbsp;{{ "logout"|trans }}</a>
+                            </li>
                         </ul>
                     </li>
                 {% else %}
                     <li class="nav-item">
-                        <a class="nav-link text-light active" href="{{ path('auth.login') }}">{{ 'button.sign_in'|trans }}</a>
+                        <a class="nav-link text-light active"
+                           href="{{ path('auth.login') }}">{{ 'button.sign_in'|trans }}</a>
                     </li>
                 {% endif %}
             </ul>
