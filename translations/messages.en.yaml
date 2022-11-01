@@ -2,6 +2,8 @@ button:
   save: "Save"
   sign_in: "Sign in"
   register: "Register"
+  confirm_delete: "Yes, delete this item"
+  cancel: "No thank you"
 
 title:
   register: "Register"

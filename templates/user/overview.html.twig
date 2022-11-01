@@ -21,16 +21,3 @@
         </table>
     </div>
 {% endblock %}
-
-{% block javascripts %}
-    <script>
-        function confirmDelete(id) {
-            if (confirm('{{ 'message.delete'|trans }}')) {
-                let path = "{{ path('user.delete', {user:'0'}) }}";
-                path = path.replace('0', id);
-
-                window.location = path;
-            }
-        }
-    </script>
-{% endblock %}

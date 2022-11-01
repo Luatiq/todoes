@@ -1,0 +1,21 @@
+.confirmModal {
+    cursor: default;
+}
+
+.confirmModal .tingle-modal-box {
+    max-width: 500px;
+}
+
+.confirmModal .tingle-modal-box__content {
+    padding: 1rem;
+}
+
+.confirmModal h1 {
+    font-size: 1.5rem;
+    margin-bottom: 0;
+}
+
+.confirmModal .tingle-modal-box__footer {
+    padding: .5rem;
+    text-align: end;
+}
