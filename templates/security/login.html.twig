@@ -9,7 +9,7 @@
     {% endif %}
 
     {% if app.user %}
-        {# Should we keep this? Or just redirect to /? #}
+        {# Todo should we keep this? Or just redirect to /? #}
         <div class="mb-3">
             You are logged in as {{ app.user.userIdentifier }}, <a href="{{ path('auth.logout') }}">Logout</a>
         </div>
@@ -40,7 +40,19 @@
         </div>
         #}
 
-        <button class="btn mt-2 btn-primary" type="submit">{{ 'button.sign_in'|trans }}</button>
+        <button type="submit" class="visually-hidden" id="submitButton"></button>
     </div>
 </form>
+
+{# Todo ugly but does the job, we'll improve /login later? #}
+<style>
+    .container {
+        max-width: 500px !important;
+    }
+</style>
+{% endblock %}
+
+{% block buttons %}
+    <button type="button" class="btn mt-2 btn-primary" onclick="document.getElementById('submitButton').click()"
+    >{{ 'button.sign_in'|trans }}</button>
 {% endblock %}

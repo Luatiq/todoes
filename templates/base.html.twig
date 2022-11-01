@@ -15,10 +15,14 @@
     <body>
         {{ include('navbar.html.twig') }}
 
-        <div class="container mt-4">
-            <h1 class="h3 font-weight-normal">{{ block('title') }}</h1>
+        <h1 class="h3 container px-0 mt-4 font-weight-normal">{{ block('title') }}</h1>
 
+        <div class="container bg-white shadow rounded p-2">
             {% block body %}{% endblock %}
+        </div>
+
+        <div class="container mt-2 p-0">
+            {% block buttons %}{% endblock %}
         </div>
 
         {% block javascripts %}{% endblock %}

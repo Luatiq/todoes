@@ -1,3 +1,7 @@
+body {
+    --bs-body-bg: whitesmoke;
+}
+
 .confirmModal {
     cursor: default;
 }

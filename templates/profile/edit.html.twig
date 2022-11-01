@@ -10,6 +10,11 @@
 
     {{ form_row(form.plainPassword) }}
 
-    <button type="submit" class="btn mt-2 btn-primary">{{ 'button.save'|trans }}</button>
+    <button type="submit" class="visually-hidden" id="submitButton"></button>
     {{ form_end(form) }}
+{% endblock %}
+
+{% block buttons %}
+    <button type="button" class="btn mt-2 btn-primary" onclick="document.getElementById('submitButton').click()"
+    >{{ 'button.save'|trans }}</button>
 {% endblock %}

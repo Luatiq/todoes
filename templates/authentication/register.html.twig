@@ -4,12 +4,27 @@
 
 {% block body %}
     <div class="mx-auto" style="max-width: 500px;">
+        <span class="small">Or <a href="{{ path('auth.login') }}" title="Login">login</a></span>
+        <br>
+
         {{ form_start(form) }}
         {{ form_row(form.display) }}
         {{ form_row(form.email) }}
         {{ form_row(form.plainPassword) }}
 
-        <button type="submit" title="{{ 'button.register'|trans }}" class="btn mt-2 btn-primary">{{ 'button.register'|trans }}</button>
+        <button type="submit" class="visually-hidden" id="submitButton"></button>
         {{ form_end(form) }}
     </div>
+
+{# Todo ugly but does the job, we'll improve /login later? #}
+<style>
+    .container {
+        max-width: 500px !important;
+    }
+</style>
+{% endblock %}
+
+{% block buttons %}
+    <button type="button" class="btn mt-2 btn-primary" onclick="document.getElementById('submitButton').click()"
+    >{{ 'button.register'|trans }}</button>
 {% endblock %}
