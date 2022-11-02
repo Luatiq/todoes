@@ -23,3 +23,7 @@ body {
     padding: .5rem;
     text-align: end;
 }
+
+.toastify {
+    background: none;
+}

@@ -25,6 +25,27 @@
             {% block buttons %}{% endblock %}
         </div>
 
-        {% block javascripts %}{% endblock %}
+        {% block javascripts %}
+            <script>
+                async function execFuncWhenReady(func) {
+                    while(typeof Toastify === "undefined") {
+                        await new Promise(resolve => setTimeout(resolve, 200));
+                    }
+                    func();
+                }
+
+                execFuncWhenReady(function() {
+                    {% for key, flash in app.flashes %}
+                        {% for message in flash %}
+                            Toastify({
+                                text: "{{ message }}",
+                                className: "rounded {{ ('flash.'~key)|trans }}",
+                                offset: {x: 0, y: 60}
+                            }).showToast();
+                        {% endfor %}
+                    {% endfor %}
+                })
+            </script>
+        {% endblock %}
     </body>
 </html>

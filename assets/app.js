@@ -3,12 +3,14 @@ import './styles/app.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import 'tingle.js/dist/tingle.min.css';
+import 'toastify-js/src/toastify.css';
 
 // JS
 import 'bootstrap/dist/js/bootstrap.bundle.min';
 import '@fortawesome/fontawesome-free/js/all.min';
 
 const Tingle = require('tingle.js/dist/tingle.min');
+window.Toastify = require('toastify-js/src/toastify');
 
 window.confirmModal = function(el) {
     let elData = el.dataset;

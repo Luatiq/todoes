@@ -34,6 +34,17 @@ action:
 message:
   delete: "Are you sure you want to delete this item?"
   impersonate: "Are you sure you want to impersonate this user?"
+  impersonation_successful: "Impersonation successful"
+  exited_impersonation: "Logged back into your own account"
+  successful_login: "Successfully logged in"
+  unsuccessful_login: "Something went wrong while logging in"
+  successful_logout: "Successfully logged out"
+  unsuccessful_logout: "Something went wrong while logging in"
+
+# Flash messages; to convert e.g. success to bg-success
+flash:
+  success: "bg-success"
+  error: "bg-danger"
 
 # Uncategorized; usually form stuff
 "Display": "Name"
