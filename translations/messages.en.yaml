@@ -4,6 +4,7 @@ button:
   register: "Register"
   confirm_delete: "Yes, delete this item"
   cancel: "No thank you"
+  confirm: "Yes please"
 
 title:
   register: "Register"
@@ -32,6 +33,7 @@ action:
 
 message:
   delete: "Are you sure you want to delete this item?"
+  impersonate: "Are you sure you want to impersonate this user?"
 
 # Uncategorized; usually form stuff
 "Display": "Name"

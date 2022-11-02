@@ -15,9 +15,14 @@
                 ><i class="fa-fw fa-solid fa-pen-to-square"></i></a>
 
                 <a
-                        href="{{ path('profile.edit', { '_switch_user': item.email }) }}"
-                        title="{{ 'action.impersonate'|trans }}"
                         class="btn btn-sm btn-secondary"
+                        title="{{ 'action.impersonate'|trans }}"
+                        onclick="confirmModal(this)"
+                        data-conf-path="{{ path('profile.edit', { '_switch_user': item.email }) }}"
+                        data-conf-text="{{ 'message.impersonate'|trans }}"
+                        data-conf-cancel-text="{{ 'button.cancel'|trans }}"
+                        data-conf-button-text="{{ 'button.confirm'|trans }}"
+                        data-conf-button-class="btn-success"
                 ><i class="fa-fw fa-solid fa-mask"></i></a>
 
                 <a
