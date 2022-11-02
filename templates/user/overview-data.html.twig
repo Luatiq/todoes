@@ -16,18 +16,19 @@
 
                 <a
                         href="{{ path('profile.edit', { '_switch_user': item.email }) }}"
-                        class="btn btn-sm btn-secondary"
                         title="{{ 'action.impersonate'|trans }}"
+                        class="btn btn-sm btn-secondary"
                 ><i class="fa-fw fa-solid fa-mask"></i></a>
 
                 <a
-                        class="btn btn-sm btn-danger confirmDelete"
-                        data-del-id="{{ item.id }}"
-                        data-del-path="{{ path('user.delete', {user:0}) }}"
-                        data-del-confirm-text="{{ 'message.delete'|trans }}"
-                        data-del-button-text="{{ 'button.confirm_delete'|trans }}"
-                        data-del-cancel-text="{{ 'button.cancel'|trans }}"
+                        class="btn btn-sm btn-danger"
                         title="{{ 'action.delete'|trans }}"
+                        onclick="confirmModal(this)"
+                        data-conf-path="{{ path('user.delete', { user: item.id }) }}"
+                        data-conf-text="{{ 'message.delete'|trans }}"
+                        data-conf-cancel-text="{{ 'button.cancel'|trans }}"
+                        data-conf-button-text="{{ 'button.confirm_delete'|trans }}"
+                        data-conf-button-class="btn-danger"
                 ><i class="fa-fw fa-solid fa-trash"></i></a>
             </td>
         </tr>
