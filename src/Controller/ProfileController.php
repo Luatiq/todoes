@@ -25,18 +25,23 @@ class ProfileController extends AbstractController
     #[Route('/edit', name: '.edit')]
     public function edit(
         Request $request,
-        UserRepository $userRepository
+        UserRepository $userRepository,
+        UserPasswordHasherInterface $passwordHasher
     ): Response
     {
         $user = $this->getUser();
-        $form = $this->createForm(UserType::class, $user);
+        $form = $this->createForm(UserType::class, $user, [
+            'isPasswordEditable' => !$this->isGranted('ROLE_PREVIOUS_ADMIN')
+        ]);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $userEntity = $userRepository->findOneBy(['email'=>$user->getUserIdentifier()]);
 
-            if ($form->get('plainPassword')->getData() && strlen($form->get('plainPassword')->getData()) > 6) {
-                // Todo fix setting pass when user has already been created
+            if (!$this->isGranted('ROLE_PREVIOUS_ADMIN') && strlen($form->get('plainPassword')->getData()) >= 6) {
+                $this->addFlash('success', 'message.pass_changed_successfully');
+
+                $userRepository->upgradePassword($userEntity, $passwordHasher->hashPassword($userEntity, $form->get('plainPassword')->getData()));
             }
 
             $this->em->persist($userEntity);

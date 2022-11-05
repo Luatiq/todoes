@@ -36,10 +36,11 @@ message:
   impersonate: "Are you sure you want to impersonate this user?"
   impersonation_successful: "Impersonation successful"
   exited_impersonation: "Logged back into your own account"
-  successful_login: "Successfully logged in"
-  unsuccessful_login: "Something went wrong while logging in"
-  successful_logout: "Successfully logged out"
-  unsuccessful_logout: "Something went wrong while logging in"
+  pass_changed_successfully: "Successfully changed your password"
+
+role:
+  ROLE_USER: "User"
+  ROLE_ADMIN: "Admin"
 
 # Flash messages; to convert e.g. success to bg-success
 flash:

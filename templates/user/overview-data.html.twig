@@ -6,7 +6,7 @@
             <td>{{ item.id }}</td>
             <td>{{ item.display }}</td>
             <td><a href="mailto:{{ item.email }}">{{ item.email }}</a></td>
-            <td>{{ item.role }}</td>
+            <td>{{ ('role.'~item.role)|trans }}</td>
             <td class="py-1 text-end">
                 <a
                         href="{{ item.id == app.user.id ? path('profile.edit') : path('user.edit', {user:item.id}) }}"

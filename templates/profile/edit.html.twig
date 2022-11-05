@@ -8,7 +8,9 @@
     {{ form_row(form.display) }}
     {{ form_row(form.email) }}
 
-    {{ form_row(form.plainPassword) }}
+    {% if not is_granted('ROLE_PREVIOUS_ADMIN') %}
+        {{ form_row(form.plainPassword) }}
+    {% endif %}
 
     <button type="submit" class="visually-hidden" id="submitButton"></button>
     {{ form_end(form) }}
