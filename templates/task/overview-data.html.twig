@@ -1,35 +1,27 @@
-{% extends 'user/overview.html.twig' %}
+{% extends 'task/overview.html.twig' %}
 
 {% block records %}
+    {# Todo if admin, show createdBy #}
     {% for item in items %}
         <tr>
             <td>{{ item.id }}</td>
             <td>{{ item.display }}</td>
-            <td><a href="mailto:{{ item.email }}">{{ item.email }}</a></td>
-            <td>{{ ('role.'~item.role)|trans }}</td>
+            <td><span class="{{ item.isHardDeadline ? 'text-warning' }}"
+                >{{ not item.deadline ? '-' : item.deadline|format_datetime('medium') }}</span>
+            </td>
+            <td>{{ item.concentrationLevelRequired }}</td>
             <td class="py-1 text-end">
                 <a
-                        href="{{ item.id == app.user.id ? path('profile.edit') : path('user.edit', {user:item.id}) }}"
+                        href="{{ path('task.edit', {entity:item.id}) }}"
                         class="btn btn-sm btn-primary"
                         title="{{ 'action.edit'|trans }}"
                 ><i class="fa-fw fa-solid fa-pen-to-square"></i></a>
 
                 <a
-                        class="btn btn-sm btn-secondary"
-                        title="{{ 'action.impersonate'|trans }}"
-                        onclick="confirmModal(this)"
-                        data-conf-path="{{ path('user.impersonate', { 'user': item.id }) }}"
-                        data-conf-text="{{ 'message.impersonate'|trans }}"
-                        data-conf-cancel-text="{{ 'button.cancel'|trans }}"
-                        data-conf-button-text="{{ 'button.confirm'|trans }}"
-                        data-conf-button-class="btn-success"
-                ><i class="fa-fw fa-solid fa-mask"></i></a>
-
-                <a
                         class="btn btn-sm btn-danger"
                         title="{{ 'action.delete'|trans }}"
                         onclick="confirmModal(this)"
-                        data-conf-path="{{ path('user.delete', { user: item.id }) }}"
+                        data-conf-path="{{ path('task.delete', { entity: item.id }) }}"
                         data-conf-text="{{ 'message.delete'|trans }}"
                         data-conf-cancel-text="{{ 'button.cancel'|trans }}"
                         data-conf-button-text="{{ 'button.confirm_delete'|trans }}"

@@ -39,9 +39,9 @@ class ProfileController extends AbstractController
             $userEntity = $userRepository->findOneBy(['email'=>$user->getUserIdentifier()]);
 
             if (!$this->isGranted('ROLE_PREVIOUS_ADMIN') && strlen($form->get('plainPassword')->getData()) >= 6) {
-                $this->addFlash('success', 'message.pass_changed_successfully');
-
                 $userRepository->upgradePassword($userEntity, $passwordHasher->hashPassword($userEntity, $form->get('plainPassword')->getData()));
+
+                $this->addFlash('success', 'message.pass_changed_successfully');
             }
 
             $this->em->persist($userEntity);

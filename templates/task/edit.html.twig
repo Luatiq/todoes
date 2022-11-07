@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ 'title.task'|trans }}{% endblock %}
+
+{% block body %}
+    {{ form_start(form) }}
+
+    {% if form.createdBy is defined %}
+        {{ form_row(form.createdBy) }}
+    {% endif %}
+
+    {{ form_row(form.display) }}
+    {{ form_row(form.description) }}
+
+    {{ form_row(form.deadline) }}
+
+    {# TODO Only display when form.deadline is filled in #}
+    <div class="my-2" id="hardDeadline">
+        {{ form_widget(form.isHardDeadline) }}
+        {{ form_label(form.isHardDeadline) }}
+    </div>
+
+    {# TODO make into slider #}
+    {{ form_row(form.concentrationLevelRequired) }}
+
+    <button type="submit" class="visually-hidden" id="submitButton"></button>
+    {{ form_end(form) }}
+{% endblock %}
+
+{% block buttons %}
+    <button type="button" class="btn mt-2 btn-primary" onclick="document.getElementById('submitButton').click()"
+    >{{ 'button.save'|trans }}</button>
+
+    {% if form.vars.data.id %}
+        <button type="button"
+                class="btn mt-2 btn-danger"
+                title="{{ 'action.delete'|trans }}"
+                onclick="confirmModal(this)"
+                data-conf-path="{{ path('task.delete', { entity: form.vars.data.id }) }}"
+                data-conf-text="{{ 'message.delete'|trans }}"
+                data-conf-cancel-text="{{ 'button.cancel'|trans }}"
+                data-conf-button-text="{{ 'button.confirm_delete'|trans }}"
+                data-conf-button-class="btn-danger"
+        >
+            {{ 'button.delete'|trans }}
+        </button>
+    {% endif %}
+{% endblock %}

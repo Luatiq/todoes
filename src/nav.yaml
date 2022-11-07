@@ -1,6 +1,6 @@
 home:
   is_granted: "ROLE_USER"
-  route: "base.home"
+  route: "task.overview"
 user_overview:
   route: "user.overview"
   is_granted: "ROLE_ADMIN"
