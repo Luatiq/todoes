@@ -39,7 +39,7 @@ class TaskController extends AbstractController
     ): Response
     {
         // Todo use securityVoter for this
-        if (!$this->isGranted('ROLE_ADMIN' && $this->getUser() !== $entity->getCreatedBy())) {
+        if (!$this->isGranted('ROLE_ADMIN') && $this->getUser() !== $entity->getCreatedBy()) {
             return $this->redirectToRoute('task.overview');
         }
 
