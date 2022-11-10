@@ -8,14 +8,6 @@
         <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
     {% endif %}
 
-    {% if app.user %}
-        {# Todo should we keep this? Or just redirect to /? #}
-        <div class="mb-3">
-            You are logged in as {{ app.user.userIdentifier }}, <a href="{{ path('auth.logout') }}">Logout</a>
-        </div>
-    {% endif %}
-
-
     <div class="mx-auto" style="max-width: 500px;">
         <span class="small">First time? <a href="{{ path('auth.register') }}" title="Register">Sign up!</a></span>
         <br>
