@@ -36,6 +36,7 @@ class TaskType extends AbstractType
                 'widget' => 'single_text',
                 'attr' => [
                     'class' => 'form-control',
+                    'onchange' => 'toggleHardDeadlineCheckbox(!!this.value)',
                 ],
                 'required' => false,
             ])

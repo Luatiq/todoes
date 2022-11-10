@@ -14,8 +14,7 @@
 
     {{ form_row(form.deadline) }}
 
-    {# TODO Only display when form.deadline is filled in #}
-    <div class="my-2" id="hardDeadline">
+    <div class="my-2 d-none" id="hardDeadline">
         {{ form_widget(form.isHardDeadline) }}
         {{ form_label(form.isHardDeadline) }}
     </div>
@@ -45,4 +44,21 @@
             {{ 'button.delete'|trans }}
         </button>
     {% endif %}
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+
+    <script>
+        function toggleHardDeadlineCheckbox(show) {
+            if (show) {
+                document.getElementById('hardDeadline').classList.remove('d-none');
+            } else {
+                document.getElementById('hardDeadline').classList.add('d-none');
+            }
+        }
+
+        {# It's hidden by default, un-hide it if deadline isn't empty onload #}
+        toggleHardDeadlineCheckbox({{ form.vars.data.deadline ? 'true' : 'false' }})
+    </script>
 {% endblock %}
