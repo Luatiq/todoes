@@ -31,6 +31,7 @@ overview:
   deadline: "Deadline"
   concentration_level_required: "Concentration lvl."
   no_results: "No results.."
+  created_by: "Created by"
 
 action:
   edit: "Edit"

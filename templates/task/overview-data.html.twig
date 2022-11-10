@@ -10,6 +10,15 @@
                 >{{ not item.deadline ? '-' : item.deadline|format_datetime('medium') }}</span>
             </td>
             <td>{{ item.concentrationLevelRequired }}</td>
+            {% if is_granted('ROLE_ADMIN') %}
+                <td>
+                    {% if item.createdBy != app.user.email %}
+                        <a href="{{ path('user.edit', {entity:item.createdBy.id}) }}">{{ item.createdBy }}</a>
+                    {% else %}
+                        {{ item.createdBy }}
+                    {% endif %}
+                </td>
+            {% endif %}
             <td class="py-1 text-end">
                 <a
                         href="{{ path('task.edit', {entity:item.id}) }}"

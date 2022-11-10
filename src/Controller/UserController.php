@@ -37,17 +37,17 @@ class UserController extends AbstractController
     }
 
     #[IsGranted('ROLE_ADMIN')]
-    #[Route('/{user}/edit', name: '.edit')]
+    #[Route('/{entity}/edit', name: '.edit')]
     public function edit(
         Request $request,
-        User    $user
+        User    $entity
     ): Response
     {
-        $form = $this->createForm(UserType::class, $user, ['isPasswordEditable' => false]);
+        $form = $this->createForm(UserType::class, $entity, ['isPasswordEditable' => false]);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $this->em->persist($user);
+            $this->em->persist($entity);
             $this->em->flush();
 
             return $this->redirectToRoute('user.overview');
@@ -59,27 +59,27 @@ class UserController extends AbstractController
     }
 
     #[IsGranted('ROLE_ADMIN')]
-    #[Route('/{user}/delete', name: '.delete')]
+    #[Route('/{entity}/delete', name: '.delete')]
     public function delete(
-        User $user
+        User $entity
     ): Response
     {
-        if ($this->getUser() === $user) return $this->redirectToRoute('profile.edit');
+        if ($this->getUser() === $entity) return $this->redirectToRoute('profile.edit');
 
-        $this->em->remove($user);
+        $this->em->remove($entity);
         $this->em->flush();
 
         return $this->redirectToRoute('user.overview');
     }
 
     #[Security("is_granted('ROLE_ALLOWED_TO_SWITCH') or is_granted('ROLE_PREVIOUS_ADMIN')")]
-    #[Route('/impersonate/{user}', name: '.impersonate')]
+    #[Route('/impersonate/{entity}', name: '.impersonate')]
     public function impersonate(
         TranslatorInterface $translator,
-        ?User               $user = null,
+        ?User               $entity = null,
     ): Response
     {
-        if (!$user) {
+        if (!$entity) {
             $this->addFlash('success', $translator->trans('message.exited_impersonation'));
             return $this->redirectToRoute('profile.edit', ['_switch_user' => '_exit']);
         }
@@ -87,7 +87,7 @@ class UserController extends AbstractController
         $this->addFlash('success', $translator->trans('message.impersonation_successful'));
 
         return $this->redirectToRoute('profile.edit', [
-            '_switch_user' => $user->getEmail(),
+            '_switch_user' => $entity->getEmail(),
         ]);
     }
 }

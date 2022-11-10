@@ -9,7 +9,7 @@
             <td>{{ ('role.'~item.role)|trans }}</td>
             <td class="py-1 text-end">
                 <a
-                        href="{{ item.id == app.user.id ? path('profile.edit') : path('user.edit', {user:item.id}) }}"
+                        href="{{ item.id == app.user.id ? path('profile.edit') : path('user.edit', {entity:item.id}) }}"
                         class="btn btn-sm btn-primary"
                         title="{{ 'action.edit'|trans }}"
                 ><i class="fa-fw fa-solid fa-pen-to-square"></i></a>
@@ -18,7 +18,7 @@
                         class="btn btn-sm btn-secondary"
                         title="{{ 'action.impersonate'|trans }}"
                         onclick="confirmModal(this)"
-                        data-conf-path="{{ path('user.impersonate', { 'user': item.id }) }}"
+                        data-conf-path="{{ path('user.impersonate', { 'entity': item.id }) }}"
                         data-conf-text="{{ 'message.impersonate'|trans }}"
                         data-conf-cancel-text="{{ 'button.cancel'|trans }}"
                         data-conf-button-text="{{ 'button.confirm'|trans }}"
@@ -29,7 +29,7 @@
                         class="btn btn-sm btn-danger"
                         title="{{ 'action.delete'|trans }}"
                         onclick="confirmModal(this)"
-                        data-conf-path="{{ path('user.delete', { user: item.id }) }}"
+                        data-conf-path="{{ path('user.delete', { entity: item.id }) }}"
                         data-conf-text="{{ 'message.delete'|trans }}"
                         data-conf-cancel-text="{{ 'button.cancel'|trans }}"
                         data-conf-button-text="{{ 'button.confirm_delete'|trans }}"

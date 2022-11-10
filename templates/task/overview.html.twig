@@ -11,6 +11,9 @@
                 <th>{{ 'overview.display'|trans }}</th>
                 <th>{{ 'overview.deadline'|trans }}</th>
                 <th>{{ 'overview.concentration_level_required'|trans }}</th>
+                {% if is_granted('ROLE_ADMIN') %}
+                    <th>{{ 'overview.created_by'|trans }}</th>
+                {% endif %}
                 <th class="text-end" style="width: 150px">{{ 'overview.actions'|trans }}</th>
             </tr>
             </thead>
